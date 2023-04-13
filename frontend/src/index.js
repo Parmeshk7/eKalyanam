@@ -2,15 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from "./reportWebVitals";
-import { StoreProvider } from './context/StoreContext';
+import { Provider } from 'react-redux';
+import store from './store';
+// import { StoreProvider } from './context/StoreContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-    <StoreProvider>
+    <Provider store={store} >
       <App />
-    </StoreProvider>
+    </Provider>
 );
 
 
