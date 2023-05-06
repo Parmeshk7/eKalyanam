@@ -230,9 +230,6 @@ exports.updateUserRole = catchAsyncErrors( async (req, res, next) => {
 
 
     const user = await User.findById(req.params.id);
-    
-
-
 });
 
 
