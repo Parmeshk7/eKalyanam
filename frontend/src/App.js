@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./Home";
+import ProductDetails from "./components/Product/ProductDetails.js"
 import About from "./About";
 import Mission from "./Mission";
 import Donations from "./Donations";
@@ -50,6 +51,7 @@ const App = () => {
       <Header2 />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/mission" element={<Mission />} />
         <Route path="/donations" element={<Donations />} />
