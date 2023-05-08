@@ -57,13 +57,14 @@ exports.updatePrasad = catchAsyncErrors( async (req, res, next) =>{
     });
 })
 
+//Delete Prasad
 exports.deletePrasad = catchAsyncErrors( async (req, res, next) =>{
     const prasad = await Prasad.findById(req.params.id);
 
     if(!prasad){
         return next(new ErrorHandler("Prasad not found", 404));
     }
-    
+
     await prasad.deleteOne();
 
     res.status(200).json({

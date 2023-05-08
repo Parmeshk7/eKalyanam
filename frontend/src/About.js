@@ -3,7 +3,7 @@ import { useProductContext } from "./context/StoreContext";
 
 
 const About = () => {
-  const { myName } = useProductContext();
+  // const { myName } = useProductContext();
 
   const data = {
     name: "e - कल्याणम्",
@@ -11,7 +11,7 @@ const About = () => {
 
   return (
     <>
-      {myName}
+      {/* {myName} */}
       <HeroSection myData={data} />
     </>
   );

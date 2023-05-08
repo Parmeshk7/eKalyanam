@@ -42,7 +42,7 @@ const TempleStore = () => {
       <div className="products">
         {products &&
           products.map((product) => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard key={product._id} product={product} pageLink={"/product"}/>
           ))}
       </div>
       

@@ -1,20 +1,22 @@
-import {ALL_PRODUCT_FAIL, ALL_PRODUCT_REQ, ALL_PRODUCT_SUCCESS, CLEAR_ERRORS} from '../constants/productConstants';
-import {PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_REQ} from "../constants/productConstants"
+import {ALL_PRASAD_REQ, ALL_PRASAD_SUCCESS, ALL_PRASAD_FAIL, CLEAR_ERRORS} from "../constants/prasadConstants";
+import {PRASAD_DETAILS_REQ, PRASAD_DETAILS_SUCCESS, PRASAD_DETAILS_FAIL} from "../constants/prasadConstants"
 
-export const productReducer = (state = {products: []}, action) => {
+
+
+export const prasadReducer = (state = {prasads: []}, action) => {
     switch(action.type){
-        case ALL_PRODUCT_REQ:
+        case ALL_PRASAD_REQ:
             return {
                 loading: true,
-                product: []
+                prasad: []
             }
-        case ALL_PRODUCT_SUCCESS:
+        case ALL_PRASAD_SUCCESS:
             return {
                 loading: false,
-                products: action.payload.products,
-                productCount: action.payload.productCount
+                prasads: action.payload.prasads,
+                prasadCount: action.payload.prasadCount
             }
-        case ALL_PRODUCT_FAIL:
+        case ALL_PRASAD_FAIL:
             return {
                 loading: false,
                 error: action.payload
@@ -29,20 +31,19 @@ export const productReducer = (state = {products: []}, action) => {
     }
 };
 
-
-export const productDetailsReducer = (state = {product : {}}, action) => {
+export const prasadDetailsReducer = (state = {prasad : {}}, action) => {
     switch(action.type){
-        case PRODUCT_DETAILS_REQ:
+        case PRASAD_DETAILS_REQ:
             return {
                 loading: true,
                 ...state,
             }
-        case PRODUCT_DETAILS_SUCCESS:
+        case PRASAD_DETAILS_SUCCESS:
             return {
                 loading: false,
-                product: action.payload,
+                prasad: action.payload,
             }
-        case PRODUCT_DETAILS_FAIL:
+        case PRASAD_DETAILS_FAIL:
             return {
                 loading: false,
                 error: action.payload
@@ -56,4 +57,3 @@ export const productDetailsReducer = (state = {product : {}}, action) => {
             return state;
     }
 };
-
