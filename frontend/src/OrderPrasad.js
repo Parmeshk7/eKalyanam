@@ -1,16 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {clearErrors, getPrasads } from "./actions/prasadAction";
+import { clearErrors, getPrasads } from "./actions/prasadAction";
 import PrasadCard from "./components/prasadCard";
 import styled from "styled-components";
 import Pagination from "react-js-pagination";
+import { Fragment } from "react";
+import Loader from "./components/layout/Loader";
+import { Typography } from "@mui/material";
+import {Slider} from "@mui/material";
+
+
+const gods = [
+  "Krishna",
+  "Hanuman",
+  "Shiv",
+  "Vishnu"
+];
+
 
 const OrderPrasad = () => {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
-  const [category, setCategory] = useState("");
+  const [god, setGod] = useState("");
 
   const { prasads, loading, error, prasadCount, resultPerPage } = useSelector(
     (state) => state.prasads
@@ -32,39 +45,73 @@ const OrderPrasad = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getPrasads(currentPage));
-  }, [dispatch, currentPage]);
+    dispatch(getPrasads(currentPage, price, god));
+  }, [dispatch, currentPage, price, god]);
 
   return (
-    <Wrapper>
-      <h2 className="productsHeading">Order Prasad</h2>
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Wrapper>
+          <h2 className="productsHeading">Order Prasad</h2>
 
-      <div className="products">
-        {prasads &&
-          prasads.map((prasad) => (
-            <PrasadCard key={prasad._id} prasad={prasad} />
-          ))}
-      </div>
-      
-      {/* {resultPerPage < productCount && ( */}
-        <div className="paginationBox">
-          <Pagination
-            activePage={currentPage}
-            itemsCountPerPage={8}
-            totalItemsCount={total}
-            onChange={setCurrentPageNo}
-            nextPageText="Next"
-            prevPageText="Prev"
-            firstPageText="1st"
-            lastPageText="Last"
-            itemClass="page-item"
-            linkClass="page-link"
-            activeClass="pageItemActive"
-            activeLinkClass="pageLinkActive"
-          />
-        </div>
-      
-    </Wrapper>
+          <div className="products">
+            {prasads &&
+              prasads.map((prasad) => (
+                <PrasadCard key={prasad._id} prasad={prasad} />
+              ))}
+          </div>
+
+          {/* {resultPerPage < productCount && ( */}
+          <div className="paginationBox">
+            <Pagination
+              activePage={currentPage}
+              itemsCountPerPage={8}
+              totalItemsCount={total}
+              onChange={setCurrentPageNo}
+              nextPageText="Next"
+              prevPageText="Prev"
+              firstPageText="1st"
+              lastPageText="Last"
+              itemClass="page-item"
+              linkClass="page-link"
+              activeClass="pageItemActive"
+              activeLinkClass="pageLinkActive"
+            />
+          </div>
+
+          <div className="filterBox">
+            <Typography className="filter-heading">Price</Typography>
+            <Slider
+              className=""
+              value={price}
+              onChangeCommitted={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={25000}
+            />
+            
+
+            <Typography className="filter-heading">Gods</Typography>
+            <ul className="categoryBox">
+              <li className="category-link" onClick={() => setGod("")}>All</li>
+              {gods.map((god) => (
+                <li
+                  className="category-link"
+                  key={god}
+                  onClick={() => setGod(god)}
+                >
+                  {god}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </Wrapper>
+      )}
+    </Fragment>
   );
 };
 
@@ -141,9 +188,22 @@ const Wrapper = styled.section`
   .filterBox {
     width: 10vmax;
     position: absolute;
-    top: 10vmax;
+    top: 22vmax;
     left: 4vmax;
+
+  
   }
+
+  .filter-heading{
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 2vh;
+  }
+
+  .slider{
+    color: tomato;
+  }
+  
 
   .categoryBox {
     padding: 0%;
@@ -151,8 +211,8 @@ const Wrapper = styled.section`
 
   .category-link {
     list-style: none;
-    color: rgba(0, 0, 0, 0.61);
-    font: 400 0.8vmax "Roboto";
+    font-weight: 500;
+    font-size: 12px;
     margin: 0.4vmax;
     cursor: pointer;
     transition: all 0.5s;

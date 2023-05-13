@@ -1,9 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProducts } from "./actions/productAction";
 import ProductCard from "./components/ProductCard";
 import styled from "styled-components";
 import Pagination from "react-js-pagination";
+import Loader from "./components/layout/Loader";
+import { Typography } from "@mui/material";
+import {Slider} from "@mui/material";
+
+
+const categories = [
+  "Rudraksha",
+  "Mala",
+  "Pendals"
+];
 
 const TempleStore = () => {
   const dispatch = useDispatch();
@@ -23,8 +33,9 @@ const TempleStore = () => {
   };
 
   const priceHandler = (event, newPrice) => {
-    setPrice(newPrice);
+      setPrice(newPrice);
   };
+
   // let count = filteredProductsCount;
   useEffect(() => {
     if (error) {
@@ -32,39 +43,76 @@ const TempleStore = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProducts(currentPage));
-  }, [dispatch, currentPage]);
+    dispatch(getProducts(currentPage, price, category));
+  }, [dispatch, currentPage, price, category, error]);
 
   return (
-    <Wrapper>
-      <h2 className="productsHeading">Temple Store</h2>
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Wrapper>
+          <h2 className="productsHeading">Temple Store</h2>
 
-      <div className="products">
-        {products &&
-          products.map((product) => (
-            <ProductCard key={product._id} product={product} pageLink={"/product"}/>
-          ))}
-      </div>
-      
-      {/* {resultPerPage < productCount && ( */}
-        <div className="paginationBox">
-          <Pagination
-            activePage={currentPage}
-            itemsCountPerPage={8}
-            totalItemsCount={total}
-            onChange={setCurrentPageNo}
-            nextPageText="Next"
-            prevPageText="Prev"
-            firstPageText="1st"
-            lastPageText="Last"
-            itemClass="page-item"
-            linkClass="page-link"
-            activeClass="pageItemActive"
-            activeLinkClass="pageLinkActive"
-          />
-        </div>
-      
-    </Wrapper>
+          <div className="products">
+            {products &&
+              products.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  pageLink={"/product"}
+                />
+              ))}
+          </div>
+
+          {/* {resultPerPage < productCount && ( */}
+          <div className="paginationBox">
+            <Pagination
+              activePage={currentPage}
+              itemsCountPerPage={8}
+              totalItemsCount={total}
+              onChange={setCurrentPageNo}
+              nextPageText="Next"
+              prevPageText="Prev"
+              firstPageText="1st"
+              lastPageText="Last"
+              itemClass="page-item"
+              linkClass="page-link"
+              activeClass="pageItemActive"
+              activeLinkClass="pageLinkActive"
+            />
+          </div>
+
+          <div className="filterBox">
+            <Typography className="filter-heading">Price</Typography>
+            <Slider
+              value={price}
+              onChangeCommitted={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={25000}
+            />
+            
+
+            <Typography className="filter-heading">Categories</Typography>
+            <ul className="categoryBox">
+              <li className="category-link" onClick={() => setCategory("")}>All</li>
+              {categories.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
+                  
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Wrapper>
+      )}
+    </Fragment>
   );
 };
 
@@ -86,6 +134,7 @@ const Wrapper = styled.section`
     padding: 0 5vmax;
     justify-content: center;
     min-height: 30vh;
+  
   }
 
   .paginationBox {
@@ -141,9 +190,22 @@ const Wrapper = styled.section`
   .filterBox {
     width: 10vmax;
     position: absolute;
-    top: 10vmax;
+    top: 22vmax;
     left: 4vmax;
+
+  
   }
+
+  .filter-heading{
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 2vh;
+  }
+
+  .slider{
+    color: tomato;
+  }
+  
 
   .categoryBox {
     padding: 0%;
@@ -151,8 +213,8 @@ const Wrapper = styled.section`
 
   .category-link {
     list-style: none;
-    color: rgba(0, 0, 0, 0.61);
-    font: 400 0.8vmax "Roboto";
+    font-weight: 500;
+    font-size: 12px;
     margin: 0.4vmax;
     cursor: pointer;
     transition: all 0.5s;
@@ -178,6 +240,8 @@ const Wrapper = styled.section`
     .category-link {
       font: 400 1.8vmax "Roboto";
     }
+
+    
   }
 `;
 

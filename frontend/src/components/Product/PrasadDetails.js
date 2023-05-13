@@ -1,53 +1,54 @@
-import React, { Fragment, useEffect, useState, } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./ProductDetails.css";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
-import {
-    clearErrors,
-    getPrasadDetails,
-  } from "../../actions/prasadAction";
+import Loader from "../layout/Loader";
 
+import { clearErrors, getPrasadDetails } from "../../actions/prasadAction";
 
-const PrasadDetails = ({match}) => {
-    const dispatch = useDispatch();
-    const { id } = useParams();
+const PrasadDetails = ({ match }) => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
-    const {prasad, loading, error} = useSelector(
-        (state) => state.prasadDetails
-    );
+  const { prasad, loading, error } = useSelector(
+    (state) => state.prasadDetails
+  );
 
-    useEffect(() => {
-        dispatch(getPrasadDetails(id));
-    }, [dispatch, id]);
+  useEffect(() => {
+    dispatch(getPrasadDetails(id));
+  }, [dispatch, id]);
 
+  const [quantity, setQuantity] = useState(1);
+  const [open, setOpen] = useState(false);
 
-    const [quantity, setQuantity] = useState(1);
-    const [open, setOpen] = useState(false);
+  const increaseQuantity = () => {
+    if (prasad.Stock <= quantity) return;
 
-    const increaseQuantity = () => {
-        if (prasad.Stock <= quantity) return;
-    
-        const qty = quantity + 1;
-        setQuantity(qty);
-      };
-    
-      const decreaseQuantity = () => {
-        if (1 >= quantity) return;
-    
-        const qty = quantity - 1;
-        setQuantity(qty);
-      };
-    
-    //   const addToCartHandler = () => {
-    //     dispatch(addItemsToCart(id, quantity));
-    //     alert.success("Item Added To Cart");
-    //   };
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
+
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+
+  //   const addToCartHandler = () => {
+  //     dispatch(addItemsToCart(id, quantity));
+  //     alert.success("Item Added To Cart");
+  //   };
 
   return (
     <Fragment>
-        <div className="ProductDetails">
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <div className="ProductDetails">
             <div className="imageSection">
               <Carousel>
                 {prasad.images &&
@@ -68,7 +69,7 @@ const PrasadDetails = ({match}) => {
                 <p>Product # {prasad._id}</p>
               </div>
               <div className="detailsBlock-2">
-               <p>{`${prasad.description}`}</p>
+                <p>{`${prasad.description}`}</p>
               </div>
               <div className="detailsBlock-3">
                 <h1>{`₹${prasad.price}`}</h1>
@@ -85,12 +86,13 @@ const PrasadDetails = ({match}) => {
                     Add to Cart
                   </button>
                 </div>
-                </div>
-                </div>
-        </div>
+              </div>
+            </div>
+          </div>
+        </Fragment>
+      )}
     </Fragment>
-  )
+  );
 };
-
 
 export default PrasadDetails;

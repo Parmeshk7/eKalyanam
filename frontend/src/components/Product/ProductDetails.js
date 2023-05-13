@@ -1,53 +1,53 @@
-import React, { Fragment, useEffect, useState, } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./ProductDetails.css";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
-import {
-    clearErrors,
-    getProductDetails,
-  } from "../../actions/productAction";
+import { clearErrors, getProductDetails } from "../../actions/productAction";
+import Loader from "../layout/Loader";
 
+const ProductDetails = ({ match }) => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
 
-const ProductDetails = ({match}) => {
-    const dispatch = useDispatch();
-    const { id } = useParams();
+  const { product, loading, error } = useSelector(
+    (state) => state.productDetails
+  );
 
-    const {product, loading, error} = useSelector(
-        (state) => state.productDetails
-    );
+  useEffect(() => {
+    dispatch(getProductDetails(id));
+  }, [dispatch, id]);
 
-    useEffect(() => {
-        dispatch(getProductDetails(id));
-    }, [dispatch, id]);
+  const [quantity, setQuantity] = useState(1);
+  const [open, setOpen] = useState(false);
 
+  const increaseQuantity = () => {
+    if (product.Stock <= quantity) return;
 
-    const [quantity, setQuantity] = useState(1);
-    const [open, setOpen] = useState(false);
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
 
-    const increaseQuantity = () => {
-        if (product.Stock <= quantity) return;
-    
-        const qty = quantity + 1;
-        setQuantity(qty);
-      };
-    
-      const decreaseQuantity = () => {
-        if (1 >= quantity) return;
-    
-        const qty = quantity - 1;
-        setQuantity(qty);
-      };
-    
-    //   const addToCartHandler = () => {
-    //     dispatch(addItemsToCart(id, quantity));
-    //     alert.success("Item Added To Cart");
-    //   };
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
+
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
+
+  //   const addToCartHandler = () => {
+  //     dispatch(addItemsToCart(id, quantity));
+  //     alert.success("Item Added To Cart");
+  //   };
 
   return (
     <Fragment>
-        <div className="ProductDetails">
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <div className="ProductDetails">
             <div className="imageSection">
               <Carousel>
                 {product.images &&
@@ -68,7 +68,7 @@ const ProductDetails = ({match}) => {
                 <p>Product # {product._id}</p>
               </div>
               <div className="detailsBlock-2">
-               <p>{`${product.description}`}</p>
+                <p>{`${product.description}`}</p>
               </div>
               <div className="detailsBlock-3">
                 <h1>{`₹${product.price}`}</h1>
@@ -85,13 +85,14 @@ const ProductDetails = ({match}) => {
                     Add to Cart
                   </button>
                 </div>
-                </div>
-                </div>
-        </div>
+              </div>
+            </div>
+          </div>
+        </Fragment>
+      )}
     </Fragment>
-  )
+  );
 };
-
 
 // const Wrapper = styled.section`
 //     .ProductDetails {

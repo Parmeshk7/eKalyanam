@@ -6,11 +6,18 @@ import {PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_REQ} from
 
 
 
-export const getProducts = (currentPage=1) => async (dispatch) => {
+export const getProducts = (currentPage=1, price = [0, 25], category) => async (dispatch) => {
     try{
         dispatch({type: ALL_PRODUCT_REQ});
 
-        const {data} = await axios.get(`/api/v1/products/?page=${currentPage}`);
+        let link = `/api/v1/products/?page=${currentPage}`;
+
+        if(category){
+            link = `/api/v1/products/?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}`;
+        }
+
+        const {data} = await axios.get(link);
+        
 
         dispatch({
             type: ALL_PRODUCT_SUCCESS,
