@@ -24,7 +24,7 @@ const PrasadDetails = ({ match }) => {
   const [open, setOpen] = useState(false);
 
   const increaseQuantity = () => {
-    if (prasad.Stock <= quantity) return;
+    if (prasad.stock <= quantity) return;
 
     const qty = quantity + 1;
     setQuantity(qty);

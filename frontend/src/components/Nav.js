@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
+import { Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/userAction";
+import {useAlert} from "react-alert";
 
 const Nav = () => {
 
@@ -161,11 +165,37 @@ const Nav = () => {
     }
   `;
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const alert = useAlert();
+  const {user, isAuthenticated} = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    dispatch(logout());
+    alert.success("Logout Successful");
+    navigate("/");
+    
+  }
+  const handleLogin = () => {
+    navigate("/login");
+    
+  }
+
+
   return (
     <Nav>
       <div className="navbar">
         <ul className="navbar-lists">
-        
+        <li>
+            <NavLink to="/login" className="navbar-link cart-trolley--link">
+              <p>Welcome {isAuthenticated && user.name}</p>
+            </NavLink>
+          </li>
+          <li>
+            {isAuthenticated && <Button className="user-logout" onClick={handleLogout}>Logout</Button>}
+            {!isAuthenticated && <Button className="user-logout" onClick={handleLogin}>Login</Button>}
+            
+          </li>
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley" />

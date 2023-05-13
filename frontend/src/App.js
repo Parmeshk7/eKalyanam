@@ -10,13 +10,17 @@ import TempleStore from "./TempleStore";
 import OrderPrasad from './OrderPrasad';
 import Contact from './Contact';
 import Articles from './Articles'
-import Cart from './Cart';
+import Cart from "./components/Cart/Cart";
 import ErrorPage from './ErrorPage';
 import { GlobalStyle } from './GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import Header from './components/Header';
 import Header2 from './components/Header2';
 import Footer from './components/Footer';
+import Login from './components/User/LoginSignUp';
+import store from './store';
+import { loadUser } from './actions/userAction';
+import ForgotPassword from './components/User/ForgotPassword';
 
 const App = () => {
   const theme = {
@@ -29,7 +33,7 @@ const App = () => {
 
       bg: "#ffeded",
       footer_bg: "#ea2027;",
-      btn: "rgb(98 84 243)",
+      btn: "#FF4D4D",
       border: "rgba(98, 84, 243, 0.5)",
       hr: "#ffffff",
       gradient:
@@ -43,6 +47,10 @@ const App = () => {
       tab: "998px",
     },
   };
+  
+  React.useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -52,6 +60,8 @@ const App = () => {
       <Header2 />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/prasad/:id" element={<PrasadDetails/>} />
         <Route path="/about" element={<About />} />
@@ -63,6 +73,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="*" element={<ErrorPage />} />
+
 
       </Routes>
       <Footer />

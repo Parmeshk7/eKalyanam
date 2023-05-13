@@ -6,9 +6,12 @@ import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProductDetails } from "../../actions/productAction";
 import Loader from "../layout/Loader";
+import { useAlert } from "react-alert";
+import { addItemsToCart } from "../../actions/cartAction";
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
+  const alert = useAlert();
   const { id } = useParams();
 
   const { product, loading, error } = useSelector(
@@ -23,7 +26,7 @@ const ProductDetails = ({ match }) => {
   const [open, setOpen] = useState(false);
 
   const increaseQuantity = () => {
-    if (product.Stock <= quantity) return;
+    if (product.stock <= quantity) return;
 
     const qty = quantity + 1;
     setQuantity(qty);
@@ -36,10 +39,10 @@ const ProductDetails = ({ match }) => {
     setQuantity(qty);
   };
 
-  //   const addToCartHandler = () => {
-  //     dispatch(addItemsToCart(id, quantity));
-  //     alert.success("Item Added To Cart");
-  //   };
+    const addToCartHandler = () => {
+      dispatch(addItemsToCart(id, quantity));
+      alert.success("Item Added To Cart");
+    };
 
   return (
     <Fragment>
@@ -80,7 +83,7 @@ const ProductDetails = ({ match }) => {
                   </div>
                   <button
                     disabled={product.Stock < 1 ? true : false}
-                    // onClick={addToCartHandler}
+                    onClick={addToCartHandler}
                   >
                     Add to Cart
                   </button>
