@@ -12,7 +12,7 @@ import {useAlert} from "react-alert";
 
 
 
-const LoginSignUp = ({ history, location }) => {
+const LoginSignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const alert = useAlert();
@@ -91,7 +91,7 @@ const LoginSignUp = ({ history, location }) => {
       alert.success("Login Successful");
       navigate("/");
     }
-  }, [dispatch, error, alert, history, isAuthenticated]);
+  }, [dispatch, error, alert, navigate, isAuthenticated]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

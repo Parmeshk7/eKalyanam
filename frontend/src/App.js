@@ -18,9 +18,11 @@ import Header from './components/Header';
 import Header2 from './components/Header2';
 import Footer from './components/Footer';
 import Login from './components/User/LoginSignUp';
+import Shipping from "./components/Cart/Shipping";
 import store from './store';
 import { loadUser } from './actions/userAction';
 import ForgotPassword from './components/User/ForgotPassword';
+import ConfirmOrder from "./components/Cart/ConfirmOrder";
 
 const App = () => {
   const theme = {
@@ -71,6 +73,8 @@ const App = () => {
         <Route path="/orderPrasad" element={<OrderPrasad />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/shipping" element={<Shipping />} />
+        <Route path="/order/confirm" element={<ConfirmOrder />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="*" element={<ErrorPage />} />
 

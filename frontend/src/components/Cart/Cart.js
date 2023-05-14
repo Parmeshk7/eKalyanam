@@ -5,10 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
 import { Typography } from "@material-ui/core";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Cart = ({ history }) => {
+const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
 
   const increaseQuantity = (id, quantity, stock) => {
@@ -32,7 +33,8 @@ const Cart = ({ history }) => {
   };
 
   const checkoutHandler = () => {
-    history.push("/login?redirect=shipping");
+    // history.push("/login?redirect=shipping");
+    navigate("/shipping");
   };
 
   return (
@@ -42,12 +44,12 @@ const Cart = ({ history }) => {
           <RemoveShoppingCartIcon />
 
           <Typography>No Product in Your Cart</Typography>
-          <Link to="/products">View Products</Link>
+          <Link to="/templestore">View Products</Link>
         </div>
       ) : (
         <Fragment>
           <div className="cartPage">
-            <div className="cartHeader">
+            <div className="cartHeader" >
               <p>Product</p>
               <p>Quantity</p>
               <p>Subtotal</p>
@@ -58,14 +60,14 @@ const Cart = ({ history }) => {
                 <div className="cartContainer" key={item.product}>
                   <CartItemCard item={item} deleteCartItems={deleteCartItems} />
                   <div className="cartInput">
-                    <button
+                    <button className="quantity-btn"
                       onClick={() =>
                         decreaseQuantity(item.product, item.quantity)
                       }
                     >
                       -
                     </button>
-                    <input type="number" value={item.quantity} readOnly />
+                    <input type="number" value={item.quantity} readOnly  />
                     <button
                       onClick={() =>
                         increaseQuantity(
