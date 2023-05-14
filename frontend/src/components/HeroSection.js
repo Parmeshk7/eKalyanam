@@ -9,7 +9,7 @@ const HeroSection = () => {
         <div className="container">
             <div className="grid grid-two-column">
                 <div className="hero-section-data">
-                <p className="intro-data">Welcome to </p>
+                <p className="intro-data">Welcome to  </p>
                 <h2> e-Kalyanam </h2>
                 <p>
                 e-Kalyanam is a pilgrimage and darshan site based in India giving pilgrims and tourists a one-stop portal to travel around India&#8217;s top religious destinations, to order prasad from your home, spiritual store and many more...

@@ -70,6 +70,7 @@ const ProductDetails = ({ match }) => {
                 <h2>{product.name}</h2>
                 <p>Product # {product._id}</p>
               </div>
+              
               <div className="detailsBlock-2">
                 <p>{`${product.description}`}</p>
               </div>

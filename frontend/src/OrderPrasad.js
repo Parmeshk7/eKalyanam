@@ -84,13 +84,14 @@ const OrderPrasad = () => {
           <div className="filterBox">
             <Typography className="filter-heading">Price</Typography>
             <Slider
-              className=""
+              className="slider"
               value={price}
               onChangeCommitted={priceHandler}
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
               max={25000}
+             
             />
             
 

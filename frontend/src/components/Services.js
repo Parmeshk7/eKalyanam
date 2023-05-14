@@ -27,7 +27,7 @@ const Services = () => {
             <div className="services-colum-2">
               <div>
                 <GiReceiveMoney className="icon" />
-                <h3>Money-back Guaranteed</h3>
+                <h3>Quality Assured</h3>
               </div>
             </div>
           </div>

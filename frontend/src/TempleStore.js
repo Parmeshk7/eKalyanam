@@ -92,6 +92,7 @@ const TempleStore = () => {
               aria-labelledby="range-slider"
               min={0}
               max={25000}
+              className="slider"
             />
             
 
@@ -192,7 +193,6 @@ const Wrapper = styled.section`
     position: absolute;
     top: 22vmax;
     left: 4vmax;
-
   
   }
 

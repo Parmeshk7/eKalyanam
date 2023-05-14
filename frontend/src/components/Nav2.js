@@ -10,6 +10,7 @@ const Nav2 = () => {
         display: flex;
         gap: 4.8rem;
         align-items: center;
+        
   
         .navbar-link {
           &:link,
@@ -157,6 +158,7 @@ const Nav2 = () => {
           padding: 0.8rem 1.4rem;
         }
       }
+
     `;
   
     return (

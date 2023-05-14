@@ -169,6 +169,7 @@ const Nav = () => {
   const navigate = useNavigate();
   const alert = useAlert();
   const {user, isAuthenticated} = useSelector((state) => state.user);
+  const {cartItems} = useSelector((state) => state.cart);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -188,7 +189,7 @@ const Nav = () => {
         <ul className="navbar-lists">
         <li>
             <NavLink to="/login" className="navbar-link cart-trolley--link">
-              <p>{isAuthenticated && `Welcome, ${user.name}`}</p>
+              <p className="user-login--name"><span style={{fontWeight: "600"}}>{isAuthenticated && `Welcome, ${user.name}`}</span></p>
             </NavLink>
           </li>
           <li>
@@ -199,7 +200,7 @@ const Nav = () => {
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <FiShoppingCart className="cart-trolley" />
-              <span className="cart-total--item"> {0} </span>
+              <span className="cart-total--item">{cartItems.length}</span>
             </NavLink>
           </li>
         </ul>
