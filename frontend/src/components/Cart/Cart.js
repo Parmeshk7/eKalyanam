@@ -58,7 +58,7 @@ const Cart = () => {
             {cartItems &&
               cartItems.map((item) => (
                 <div className="cartContainer" key={item.product}>
-                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+                  <CartItemCard itemType={"prasad"} item={item} deleteCartItems={deleteCartItems} />
                   <div className="cartInput">
                     <button className="quantity-btn"
                       onClick={() =>

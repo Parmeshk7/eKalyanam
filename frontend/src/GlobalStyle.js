@@ -127,7 +127,7 @@ ${"" /* resuable code section  */}
       position: absolute;
       top: 15%;
       right: 10%;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       background-color: ${({ theme }) => theme.colors.bg};
       color: ${({ theme }) => theme.colors.helper};
       padding: 0.8rem 2rem;

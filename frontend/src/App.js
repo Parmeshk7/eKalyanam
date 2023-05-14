@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react'
 import axios from "axios";
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from "./Home";
+import WebFont from "webfontloader";
 import ProductDetails from "./components/Product/ProductDetails.js"
 import PrasadDetails from "./components/Product/PrasadDetails";
 import About from "./About";
@@ -29,6 +30,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import ProtectedRoute from './components/Route/ProtectedRoute';
 import OrderSuccess from './components/Cart/OrderSuccess';
+import MyOrders from './components/Order/MyOrders';
+import OrderDetails from './components/Order/OrderDetails';
 
 const App = () => {
   const theme = {
@@ -65,6 +68,12 @@ const App = () => {
   }
   
   useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Roboto", "Droid Sans", "Chilanka"],
+      },
+    });
+
     store.dispatch(loadUser());
 
     getStripeApiKey();
@@ -100,7 +109,8 @@ const App = () => {
         <Route path="*" element={<ErrorPage />} />
         <Route path="/process/payment" element ={<Payment />} />
         <Route path="/success" element ={<OrderSuccess />} />
-
+        <Route path="/orders" element ={<MyOrders />} />
+        <Route path="/order/:id" element ={<OrderDetails />} />
       
       </Routes>
 

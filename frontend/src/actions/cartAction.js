@@ -24,6 +24,24 @@ import {
     localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
   };
   
+  export const addPasadToCart = (id, quantity) => async (dispatch, getState) => {
+    const { data } = await axios.get(`/api/v1/prasad/${id}`);
+  
+    dispatch({
+      type: ADD_TO_CART,
+      payload: {
+        product: data.prasad._id,
+        name: data.prasad.name,
+        price: data.prasad.price,
+        image: data.prasad.images[0].url,
+        stock: data.prasad.Stock,
+        quantity,
+      },
+    });
+  
+    localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+  };
+
   // REMOVE FROM CART
   export const removeItemsFromCart = (id) => async (dispatch, getState) => {
     dispatch({

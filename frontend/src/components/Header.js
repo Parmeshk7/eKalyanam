@@ -54,5 +54,16 @@ const MainHeader = styled.header`
     }
   }
 
+  @media (max-width: ${({ theme }) => theme.media.mobile}){
+    .header-img{
+      height : 4.5rem;
+    }
+  }
+  @media (max-width: 1000px){
+    .header-img{
+      height: 5rem;
+    }
+  }
+
 `;
 export default Header;

@@ -3,13 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CartItemCard = ({ item, deleteCartItems }) => {
+const CartItemCard = ({itemType, item, deleteCartItems }) => {
   return (
     <Wrapper>
         <div className="CartItemCard">
             <img src={item.image} alt="ssa" />
             <div>
-            <Link to={`/product/${item.product}`}>{item.name}</Link>
+              {itemType === "prasad" ? <Link to={`/prasad/${item.product}`}>{item.name}</Link> : <Link to={`/product/${item.product}`}>{item.name}</Link> }
+            
             <span>{`Price: ₹${item.price}`}</span>
             <p onClick={() => deleteCartItems(item.product)}>Remove</p>
             </div>

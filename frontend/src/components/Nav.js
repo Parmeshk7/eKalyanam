@@ -188,12 +188,12 @@ const Nav = () => {
         <ul className="navbar-lists">
         <li>
             <NavLink to="/login" className="navbar-link cart-trolley--link">
-              <p>Welcome {isAuthenticated && user.name}</p>
+              <p>{isAuthenticated && `Welcome, ${user.name}`}</p>
             </NavLink>
           </li>
           <li>
             {isAuthenticated && <Button className="user-logout" onClick={handleLogout}>Logout</Button>}
-            {!isAuthenticated && <Button className="user-logout" onClick={handleLogin}>Login</Button>}
+            {!isAuthenticated && <Button className="user-login" onClick={handleLogin}>Login</Button>}
             
           </li>
           <li>

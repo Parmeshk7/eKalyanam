@@ -5,11 +5,17 @@ import { useParams } from "react-router-dom";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader";
+import { addPasadToCart } from "../../actions/cartAction";
+import { useAlert } from "react-alert";
+
+
 
 import { clearErrors, getPrasadDetails } from "../../actions/prasadAction";
 
 const PrasadDetails = ({ match }) => {
   const dispatch = useDispatch();
+  const alert = useAlert();
+
   const { id } = useParams();
 
   const { prasad, loading, error } = useSelector(
@@ -37,10 +43,10 @@ const PrasadDetails = ({ match }) => {
     setQuantity(qty);
   };
 
-  //   const addToCartHandler = () => {
-  //     dispatch(addItemsToCart(id, quantity));
-  //     alert.success("Item Added To Cart");
-  //   };
+    const addToCartHandler = () => {
+      dispatch(addPasadToCart(id, quantity));
+      alert.success("Item Added To Cart");
+    };
 
   return (
     <Fragment>
@@ -81,11 +87,18 @@ const PrasadDetails = ({ match }) => {
                   </div>
                   <button
                     disabled={prasad.Stock < 1 ? true : false}
-                    // onClick={addToCartHandler}
+                    onClick={addToCartHandler}
                   >
                     Add to Cart
                   </button>
                 </div>
+
+                <p>
+                  Status : 
+                  <b className={prasad.Stock < 1 ? "redColor" : "greenColor"}>
+                    {prasad.Stock < 1 ? "OutOfStock" : "InStock"}
+                  </b>
+                </p>
               </div>
             </div>
           </div>

@@ -6,15 +6,6 @@ import {useSelector, useDispatch} from 'react-redux';
 
 
 
-// const product = {
-//     name: "Mala",
-//     images: ['https://cdn.shopify.com/s/files/1/0276/3951/products/big1.263023.4_large.jpeg?v=1595504664'],
-//     _id: 'hfksfhkjsgfkjsfdf',
-//     price: 1200
-    
-    
-// }
-
 const FeaturedProduct = () => {
   const dispatch = useDispatch();
   const {loading, error, products, productCard} = useSelector(state => state.products);

@@ -87,7 +87,15 @@ const ProductDetails = ({ match }) => {
                   >
                     Add to Cart
                   </button>
+                  
                 </div>
+
+                <p>
+                  Status : 
+                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
+                    {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                  </b>
+                </p>
               </div>
             </div>
           </div>

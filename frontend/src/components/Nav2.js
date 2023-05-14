@@ -187,22 +187,22 @@ const Nav2 = () => {
                 Temple Store
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to="/donations"
                 className="navbar-link "
                 onClick={() => setMenuIcon(false)}>
                 Donation
               </NavLink>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <NavLink
                 to="/articles"
                 className="navbar-link "
                 onClick={() => setMenuIcon(false)}>
                 Articles
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 to="/about"
