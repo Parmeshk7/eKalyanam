@@ -12,7 +12,10 @@ import {Slider} from "@mui/material";
 const categories = [
   "Rudraksha",
   "Mala",
-  "Pendal"
+  "Pendant",
+  "Idol",
+  "Shivling"
+
 ];
 
 const TempleStore = () => {

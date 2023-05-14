@@ -45,7 +45,7 @@ const App = () => {
       bg: "#ffeded",
       footer_bg: "#ea2027;",
       btn: "#FF4D4D",
-      border: "rgba(98, 84, 243, 0.5)",
+      border: "tomato",
       hr: "#ffffff",
       gradient:
         "linear-gradient(0deg, rgb(132 144 255) 0%, rgb(98 189 252) 100%)",
