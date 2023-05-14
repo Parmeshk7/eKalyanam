@@ -1,5 +1,6 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {React, useState, useEffect} from 'react'
+import axios from "axios";
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Home from "./Home";
 import ProductDetails from "./components/Product/ProductDetails.js"
 import PrasadDetails from "./components/Product/PrasadDetails";
@@ -23,6 +24,11 @@ import store from './store';
 import { loadUser } from './actions/userAction';
 import ForgotPassword from './components/User/ForgotPassword';
 import ConfirmOrder from "./components/Cart/ConfirmOrder";
+import Payment from "./components/Cart/Payment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import ProtectedRoute from './components/Route/ProtectedRoute';
+import OrderSuccess from './components/Cart/OrderSuccess';
 
 const App = () => {
   const theme = {
@@ -49,9 +55,19 @@ const App = () => {
       tab: "998px",
     },
   };
+
+  const [stripeApiKey, setStripeApiKey] = useState("");
+
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeapikey");
+
+    setStripeApiKey(data.stripeApiKey);
+  }
   
-  React.useEffect(() => {
+  useEffect(() => {
     store.dispatch(loadUser());
+
+    getStripeApiKey();
   }, []);
 
   return (
@@ -60,6 +76,11 @@ const App = () => {
       <GlobalStyle />
       <Header />
       <Header2 />
+
+      {(
+        <Elements stripe={loadStripe(stripeApiKey)}>
+           
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -77,9 +98,14 @@ const App = () => {
         <Route path="/order/confirm" element={<ConfirmOrder />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="*" element={<ErrorPage />} />
+        <Route path="/process/payment" element ={<Payment />} />
+        <Route path="/success" element ={<OrderSuccess />} />
 
-
+      
       </Routes>
+
+      </Elements>
+        )}
       <Footer />
     </BrowserRouter>
     </ThemeProvider>
