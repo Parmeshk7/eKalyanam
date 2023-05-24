@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userAction";
 import {useAlert} from "react-alert";
+import { useEffect } from "react";
 
 const Nav = () => {
 
@@ -80,6 +81,12 @@ const Nav = () => {
     .user-login {
       font-size: 1.4rem;
       padding: 0.8rem 1.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:hover{
+        color: ${({ theme }) => theme.colors.helper};
+        transform: scale(0.9);
+      }
     }
 
     @media (max-width: ${({ theme }) => theme.media.mobile}) {
@@ -161,7 +168,11 @@ const Nav = () => {
       .user-login {
         font-size: 2.2rem;
         padding: 0.8rem 1.4rem;
+      &:hover{
+        color: ${({ theme }) => theme.colors.helper};
       }
+      }
+
     }
   `;
 
@@ -171,16 +182,25 @@ const Nav = () => {
   const {user, isAuthenticated} = useSelector((state) => state.user);
   const {cartItems} = useSelector((state) => state.cart);
 
-  const handleLogout = () => {
+  
+
+  
+  const handleLogout = async () => {
     dispatch(logout());
+    localStorage.clear();
     alert.success("Logout Successful");
     navigate("/");
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 1000);
     
   }
+
   const handleLogin = () => {
     navigate("/login");
     
   }
+
 
 
   return (
@@ -188,13 +208,13 @@ const Nav = () => {
       <div className="navbar">
         <ul className="navbar-lists">
         <li>
-            <NavLink to="/login" className="navbar-link cart-trolley--link">
+            <NavLink to="/admin/dashboard" className="navbar-link cart-trolley--link">
               <p className="user-login--name"><span style={{fontWeight: "600"}}>{isAuthenticated && `Welcome, ${user.name}`}</span></p>
             </NavLink>
           </li>
           <li>
-            {isAuthenticated && <Button className="user-logout" onClick={handleLogout}>Logout</Button>}
-            {!isAuthenticated && <Button className="user-login" onClick={handleLogin}>Login</Button>}
+            {isAuthenticated && <input type="button" value={"Logout"} className="user-logout" onClick={handleLogout} />}
+            {!isAuthenticated && <input type="button" value={"Login"} className="user-login" onClick={handleLogin} />}
             
           </li>
           <li>

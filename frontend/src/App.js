@@ -32,6 +32,11 @@ import ProtectedRoute from './components/Route/ProtectedRoute';
 import OrderSuccess from './components/Cart/OrderSuccess';
 import MyOrders from './components/Order/MyOrders';
 import OrderDetails from './components/Order/OrderDetails';
+import Dashboard from './components/admin/Dashboard';
+import Profile from './components/User/Profile';
+import ProductList from './components/admin/ProductList';
+import NewProduct from './components/admin/NewProduct';
+import UpdateProduct from './components/admin/UpdateProduct';
 
 const App = () => {
   const theme = {
@@ -111,6 +116,13 @@ const App = () => {
         <Route path="/success" element ={<OrderSuccess />} />
         <Route path="/orders" element ={<MyOrders />} />
         <Route path="/order/:id" element ={<OrderDetails />} />
+        <Route path='/admin/dashboard' element={ <Dashboard />} />
+        <Route path='/me' element={ <Profile />} />
+        <Route path='/admin/products' element={ <ProductList />} />
+        <Route path='/admin/product' element={ <NewProduct />} />
+        <Route path='/admin/product/:id' element={ <UpdateProduct />} />
+
+
       
       </Routes>
 

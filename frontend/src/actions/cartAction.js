@@ -24,7 +24,7 @@ import {
     localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
   };
   
-  export const addPasadToCart = (id, quantity) => async (dispatch, getState) => {
+  export const addPrasadToCart = (id, quantity) => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/v1/prasad/${id}`);
   
     dispatch({

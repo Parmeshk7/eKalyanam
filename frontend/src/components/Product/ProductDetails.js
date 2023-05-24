@@ -18,6 +18,8 @@ const ProductDetails = ({ match }) => {
     (state) => state.productDetails
   );
 
+  const {isAuthenticated} = useSelector((state) => state.user);
+
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [dispatch, id]);
@@ -40,8 +42,15 @@ const ProductDetails = ({ match }) => {
   };
 
     const addToCartHandler = () => {
-      dispatch(addItemsToCart(id, quantity));
-      alert.success("Item Added To Cart");
+      if(isAuthenticated){
+        dispatch(addItemsToCart(id, quantity));
+        alert.success("Item Added To Cart");
+      }
+      else{
+        alert.error("You need to Login first");
+      }
+
+      
     };
 
   return (

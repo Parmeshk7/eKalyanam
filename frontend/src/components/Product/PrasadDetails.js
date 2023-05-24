@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader";
-import { addPasadToCart } from "../../actions/cartAction";
+import { addPrasadToCart } from "../../actions/cartAction";
 import { useAlert } from "react-alert";
 
 
@@ -21,6 +21,7 @@ const PrasadDetails = ({ match }) => {
   const { prasad, loading, error } = useSelector(
     (state) => state.prasadDetails
   );
+  const {isAuthenticated} = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getPrasadDetails(id));
@@ -44,8 +45,13 @@ const PrasadDetails = ({ match }) => {
   };
 
     const addToCartHandler = () => {
-      dispatch(addPasadToCart(id, quantity));
-      alert.success("Item Added To Cart");
+      if(isAuthenticated){
+        dispatch(addPrasadToCart(id, quantity));
+        alert.success("Item Added To Cart");
+      }
+      else{
+        alert.error("You need to Login first");
+      }
     };
 
   return (
