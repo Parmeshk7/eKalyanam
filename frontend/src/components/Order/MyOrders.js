@@ -173,6 +173,7 @@ const Wrapper = styled.section`
     font-weight: 700;
 }
 
+
 @media screen and (max-width: 600px) {
   .myOrdersPage {
     padding: 0;

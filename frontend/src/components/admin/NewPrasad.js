@@ -10,11 +10,13 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
 import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import PinDropIcon from '@mui/icons-material/PinDrop';
 import SideBar from "./Sidebar";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import { useNavigate } from "react-router-dom";
+import { createPrasad } from "../../actions/prasadAction";
 
-const NewProduct = ({ history }) => {
+const NewPrasad = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ const NewProduct = ({ history }) => {
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
   const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -30,11 +33,10 @@ const NewProduct = ({ history }) => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Rudraksha",
-    "Mala",
-    "Pendant",
-    "Idol",
-    "Shivling"
+    "Krishna",
+    "Hanuman",
+    "Shiv",
+    "Vishnu"
   ];
 
   useEffect(() => {
@@ -44,11 +46,11 @@ const NewProduct = ({ history }) => {
     }
 
     if (success) {
-      alert.success("Product Created Successfully");
+      alert.success("Prasad Created Successfully");
       navigate("/admin/dashboard");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, history, success]);
+  }, [dispatch, alert, error, navigate , success]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -58,13 +60,14 @@ const NewProduct = ({ history }) => {
     myForm.set("name", name);
     myForm.set("price", price);
     myForm.set("description", description);
-    myForm.set("category", category);
+    myForm.set("god", category);
     myForm.set("stock", Stock);
+    myForm.set("location", location);
 
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(createProduct(myForm));
+    dispatch(createPrasad(myForm));
   };
 
   const createProductImagesChange = (e) => {
@@ -98,13 +101,13 @@ const NewProduct = ({ history }) => {
             encType="multipart/form-data"
             onSubmit={createProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Create Prasad</h1>
 
             <div>
               <SpellcheckIcon />
               <input
                 type="text"
-                placeholder="Product Name"
+                placeholder="Prasad Name"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -124,7 +127,7 @@ const NewProduct = ({ history }) => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Product Description"
+                placeholder="Prasad Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"
@@ -142,6 +145,17 @@ const NewProduct = ({ history }) => {
                   </option>
                 ))}
               </select>
+            </div>
+
+            <div>
+              <PinDropIcon />
+              <input
+                type="text"
+                placeholder="Location"
+                required
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
             </div>
 
             <div>
@@ -184,4 +198,4 @@ const NewProduct = ({ history }) => {
   );
 };
 
-export default NewProduct;  
+export default NewPrasad;  

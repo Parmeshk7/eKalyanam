@@ -37,6 +37,13 @@ import Profile from './components/User/Profile';
 import ProductList from './components/admin/ProductList';
 import NewProduct from './components/admin/NewProduct';
 import UpdateProduct from './components/admin/UpdateProduct';
+import PrasadList from './components/admin/PrasadList';
+import NewPrasad from './components/admin/NewPrasad';
+import UpdatePrasad from './components/admin/UpdatePrasad';
+import OrderList from './components/admin/OrderList';
+import ProcessOrder from './components/admin/ProcessOrder';
+import UsersList from './components/admin/UsersList';
+import UpdateUser from './components/admin/UpdateUser';
 
 const App = () => {
   const theme = {
@@ -121,6 +128,13 @@ const App = () => {
         <Route path='/admin/products' element={ <ProductList />} />
         <Route path='/admin/product' element={ <NewProduct />} />
         <Route path='/admin/product/:id' element={ <UpdateProduct />} />
+        <Route path='/admin/prasads' element={ <PrasadList />} />
+        <Route path='/admin/prasad' element={ <NewPrasad />} />
+        <Route path='/admin/prasad/:id' element={ <UpdatePrasad />} />
+        <Route path='/admin/orders' element={ <OrderList />} />
+        <Route path='/admin/order/:id' element={ <ProcessOrder />} />
+        <Route path='/admin/users' element={ <UsersList />} />
+        <Route path='/admin/user/:id' element={ <UpdateUser />} />
 
 
       

@@ -3,7 +3,7 @@ import {PRASAD_DETAILS_REQ, PRASAD_DETAILS_SUCCESS, PRASAD_DETAILS_FAIL} from ".
 
 
 
-export const prasadReducer = (state = {prasads: []}, action) => {
+export const prasadsReducer = (state = {prasads: []}, action) => {
     switch(action.type){
         case ALL_PRASAD_REQ:
             return {

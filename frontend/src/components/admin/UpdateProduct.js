@@ -58,7 +58,7 @@ const UpdateProduct = () => {
       setDescription(product.description);
       setPrice(product.price);
       setCategory(product.category);
-      setStock(product.Stock);
+      setStock(product.stock);
       setOldImages(product.images);
     }
     if (error) {
@@ -96,7 +96,7 @@ const UpdateProduct = () => {
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
-    myForm.set("Stock", Stock);
+    myForm.set("stock", Stock);
 
     images.forEach((image) => {
       myForm.append("images", image);

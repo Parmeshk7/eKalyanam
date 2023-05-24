@@ -121,12 +121,13 @@ const OrderDetails = ({ match }) => {
 };
 
 const Wrapper = styled.section`
+
 .orderDetailsPage {
   background-color: white;
 }
 
 .orderDetailsContainer > h2 {
-  font: 300 2vmax "Roboto";
+  font: 300 1vmax "Roboto";
   margin: 1vmax 0;
   color: tomato;
 }
@@ -192,12 +193,7 @@ const Wrapper = styled.section`
   color: #5e5e5e;
 }
 
-.greenColor{
-    color: green;
-}
-.redColor{
-    color: red;
-}
+
 
 @media screen and (max-width: 600px) {
   .orderDetailsContainer > p {
@@ -237,6 +233,9 @@ const Wrapper = styled.section`
     font: 100 4vw "Roboto";
   }
 }
+
+
+
 `
 
 export default OrderDetails;

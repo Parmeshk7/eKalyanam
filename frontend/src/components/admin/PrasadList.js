@@ -15,8 +15,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "./Sidebar";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+import { deletePrasad, getAdminPrasad } from "../../actions/prasadAction";
 
-const ProductList = () => {
+const PrasadList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,7 +30,7 @@ const ProductList = () => {
   );
 
   const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));
+    dispatch(deletePrasad(id));
   };
 
   useEffect(() => {
@@ -44,12 +45,12 @@ const ProductList = () => {
     }
 
     if (isDeleted) {
-      alert.success("Product Deleted Successfully");
+      alert.success("Prasad Deleted Successfully");
       navigate("/admin/dashboard");
-      dispatch({ type: DELETE_PRODUCT_RESET });
+      dispatch({ type: DELETE_PRODUCT_RESET});
     }
 
-    dispatch(getAdminProduct());
+    dispatch(getAdminPrasad());
   }, [dispatch, alert, error, deleteError, isDeleted]);
 
   const columns = [
@@ -87,7 +88,7 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.row.id}`}>
+            <Link to={`/admin/prasad/${params.row.id}`}>
               <EditIcon />
             </Link>
 
@@ -123,7 +124,7 @@ const ProductList = () => {
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL PRODUCTS</h1>
+          <h1 id="productListHeading">ALL PRASADS</h1>
 
           <DataGrid
             rows={rows}
@@ -139,4 +140,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default PrasadList;

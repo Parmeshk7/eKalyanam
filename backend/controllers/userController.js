@@ -219,18 +219,31 @@ exports.deleteUser = catchAsyncErrors( async (req, res, next) => {
 
     await User.deleteOne({_id : req.params.id});
     res.status(200).json({
-        success: true
+        success: true,
+        message: "User Deleted Successfully",
     });
 
 });
 
 //Update User Role
 exports.updateUserRole = catchAsyncErrors( async (req, res, next) => {
-
-
-
-    const user = await User.findById(req.params.id);
-});
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        role: req.body.role,
+      };
+    
+      await User.findByIdAndUpdate(req.params.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+    
+      res.status(200).json({
+        success: true,
+      });
+    });
+    
 
 
 
