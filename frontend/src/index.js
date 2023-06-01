@@ -4,7 +4,6 @@ import App from './App';
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from 'react-redux';
 import store from './store';
-// import { StoreProvider } from './context/StoreContext';
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 

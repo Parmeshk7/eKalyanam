@@ -1,13 +1,13 @@
 import axios from "axios";
 import {ALL_PRASAD_REQ, ALL_PRASAD_SUCCESS, ALL_PRASAD_FAIL, CLEAR_ERRORS} from "../constants/prasadConstants";
-import {PRASAD_DETAILS_REQ, PRASAD_DETAILS_SUCCESS, PRASAD_DETAILS_FAIL} from "../constants/prasadConstants"
+import {PRASAD_DETAILS_REQ, PRASAD_DETAILS_SUCCESS, PRASAD_DETAILS_FAIL} from "../constants/prasadConstants";
 import { ADMIN_PRODUCT_FAIL, ADMIN_PRODUCT_REQUEST, ADMIN_PRODUCT_SUCCESS, DELETE_PRODUCT_FAIL, DELETE_PRODUCT_REQUEST, DELETE_PRODUCT_SUCCESS, NEW_PRODUCT_FAIL, NEW_PRODUCT_REQUEST, NEW_PRODUCT_SUCCESS, UPDATE_PRODUCT_FAIL, UPDATE_PRODUCT_REQUEST, UPDATE_PRODUCT_SUCCESS } from "../constants/productConstants";
 
-export const getPrasads = (currentPage=1, price = [0, 25], god) => async (dispatch) => {
+export const getPrasads = (currentPage=1, price = [0, 25000], god) => async (dispatch) => {
     try{
         dispatch({type: ALL_PRASAD_REQ});
-
-        let link = `/api/v1/prasads/?page=${currentPage}`;
+        
+        let link = `/api/v1/prasads/?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
 
         if(god){
             link = `/api/v1/prasads/?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&god=${god}`;

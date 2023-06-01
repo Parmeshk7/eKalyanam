@@ -8,7 +8,7 @@ export const prasadsReducer = (state = {prasads: []}, action) => {
         case ALL_PRASAD_REQ:
             return {
                 loading: true,
-                prasad: []
+                prasads: []
             }
         case ALL_PRASAD_SUCCESS:
             return {

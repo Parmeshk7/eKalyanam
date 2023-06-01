@@ -217,29 +217,6 @@ const Mission = () => {
   );
 };
 
-// const Wrapper = styled.section`
-//   .container{
-//     padding: 3rem;
-//     position: relative;
-//     height: 100vh;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-
-//   img{
-//     height: 40rem;
-//     position: absolute;
-//     opacity: 0.5;
-//     z-index: -1;
-//   }
-
-//   .container > h3 {
-//     ${'' /* background: lightgreen; */}
-//     text-transform : uppercase;
-//     padding-bottom : 1.5rem;
-//   }
-// `;
 
 
 const Wrapper = styled.section`
@@ -250,14 +227,6 @@ const Wrapper = styled.section`
     color: #fff;
   }
 
-  ${'' /* img {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0.3;
-    z-index: -1;
-  } */}
 
   .background-image {
     position: fixed;
