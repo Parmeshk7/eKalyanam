@@ -81,7 +81,6 @@ const PrasadDetails = ({ match }) => {
                 <p>Product # {prasad._id}</p>
               </div>
               <div className="detailsBlock-2">
-                <p>{`${prasad.description}`}</p>
               </div>
               <div className="detailsBlock-3">
                 <h1>{`₹${prasad.price}`}</h1>
@@ -92,17 +91,22 @@ const PrasadDetails = ({ match }) => {
                     <button onClick={increaseQuantity}>+</button>
                   </div>
                   <button
-                    disabled={prasad.Stock < 1 ? true : false}
+                    disabled={prasad.stock < 1 ? true : false}
                     onClick={addToCartHandler}
                   >
                     Add to Cart
                   </button>
                 </div>
 
+                <div className="detailsBlock-4">
+                Description : <p>{prasad.description}</p>
+                
+              </div>
+
                 <p>
                   Status : 
-                  <b className={prasad.Stock < 1 ? "redColor" : "greenColor"}>
-                    {prasad.Stock < 1 ? "OutOfStock" : "InStock"}
+                  <b className={prasad.stock < 1 ? "redColor" : "greenColor"}>
+                    {prasad.stock < 1 ? "OutOfStock" : "InStock"}
                   </b>
                 </p>
               </div>

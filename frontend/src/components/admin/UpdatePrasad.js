@@ -9,7 +9,6 @@ import {
 } from "../../actions/productAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
-// import MetaData from "../layout/MetaData";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import DescriptionIcon from "@mui/icons-material/Description";
 import StorageIcon from "@mui/icons-material/Storage";
@@ -53,7 +52,6 @@ const UpdatePrasad = () => {
   ];
 
   const productId = useParams().id;
-//   console.log("productId", productId, typeof productId);
 
   useEffect(() => {
     if (product && product._id !== productId) {
@@ -134,7 +132,6 @@ const UpdatePrasad = () => {
 
   return (
     <Fragment>
-      {/* <MetaData title="Create Product" /> */}
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">

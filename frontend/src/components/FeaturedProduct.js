@@ -25,10 +25,6 @@ const FeaturedProduct = () => {
                 <Product product={product} />
               ))}
 
-            {/* {products &&
-              products.map((product) => (
-                <ProductCard key={product._id} product={product} />
-              ))} */}
         </div>
     </Wrapper>
   )
@@ -38,7 +34,6 @@ const FeaturedProduct = () => {
 const Wrapper = styled.section`
 .homeHeading{
     text-align: center;
-    /* font-family: Roboto; */
     font-size: 1.4vmax;
     border-bottom: 1px solid rgba(21, 21, 21, 0.5);
     width: 20vmax;

@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const OrderSuccess = () => {
+
+  console.log(localStorage.getItem("cartItems") === null);
+  if(localStorage.getItem("cartItems")){
+    localStorage.removeItem("cartItems");
+    window.location.reload();
+  }
+
   return (
     <Wrapper>
         <div className="orderSuccess">

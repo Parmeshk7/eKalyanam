@@ -1,7 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-// import "./orderDetails.css";
 import { useSelector, useDispatch } from "react-redux";
-// import MetaData from "../layout/MetaData";
 import { Link, useParams } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import { getOrderDetails, clearErrors } from "../../actions/orderAction";
@@ -29,7 +27,6 @@ const OrderDetails = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          {/* <MetaData title="Order Details" /> */}
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
               <Typography component="h2">

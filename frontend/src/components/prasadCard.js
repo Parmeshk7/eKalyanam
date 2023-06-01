@@ -3,24 +3,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const PrasadCard = ({ prasad }) => {
-  // const options = {
-  //   value: product.ratings,
-  //   readOnly: true,
-  //   precision: 0.5,
-  // };
   
   return (
     <Wrapper>
       <Link className="productCard" to={`/prasad/${prasad._id}`}>
         <img src={prasad.images[0].url} alt={prasad.name} />
         <p>{prasad.name}</p>
-        {/* <div>
-          <Rating {...options} />{" "}
-          <span className="productCardSpan">
-            {" "}
-            ({product.numOfReviews} Reviews)
-          </span>
-        </div> */}
         <span>{`₹${prasad.price}`}</span>
       </Link>
     </Wrapper>
@@ -32,6 +20,7 @@ const Wrapper = styled.section`
 
 .productCard {
   width: 14vmax;
+  
   display: flex;
   flex-direction: column;
   text-decoration: none;

@@ -201,6 +201,12 @@
     text-align: center;
     color: rgba(0, 0, 0, 0.548);
   }
+  .redColor{
+    color: red;
+  }
+  .greenColor{
+    color: green;
+  }
   
   @media screen and (max-width: 600px) {
     .ProductDetails {

@@ -10,7 +10,6 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
-// import MetaData from "../layout/MetaData";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SideBar from "./Sidebar";
@@ -118,8 +117,6 @@ const ProductList = () => {
 
   return (
     <Fragment>
-      {/* <MetaData title={`ALL PRODUCTS - Admin`} /> */}
-
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">

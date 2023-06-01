@@ -1,6 +1,5 @@
 import React from "react";
-// import "./sidebar.css";
-// import logo from "../../images/logo.png";
+
 import { Link } from "react-router-dom";
 import { TreeView, TreeItem } from "@material-ui/lab";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -17,9 +16,6 @@ const Sidebar = () => {
   return (
     <Wrapper>
       <div className="sidebar">
-        <Link to="/">
-          <img src={``} alt="Ecommerce" />
-        </Link>
         <Link to="/admin/dashboard">
           <p>
             <DashboardIcon /> Dashboard
@@ -30,13 +26,29 @@ const Sidebar = () => {
             defaultCollapseIcon={<ExpandMoreIcon />}
             defaultExpandIcon={<ImportExportIcon />}
           >
-            <TreeItem nodeId="1" label="Products">
+            <TreeItem nodeId="1" label={<p>Product</p>}>
               <Link to="/admin/products">
-                <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
+                <TreeItem nodeId="2" label={<p>All</p>} icon={<PostAddIcon />} />
               </Link>
 
               <Link to="/admin/product">
-                <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
+                <TreeItem nodeId="3" label={<p>Create</p>} icon={<AddIcon />} />
+              </Link>
+            </TreeItem>
+          </TreeView>
+        </Link>
+        <Link>
+          <TreeView
+            defaultCollapseIcon={<ExpandMoreIcon />}
+            defaultExpandIcon={<ImportExportIcon />}
+          >
+            <TreeItem nodeId="1" label={<p>Prasad</p>}>
+              <Link to="/admin/prasads">
+                <TreeItem nodeId="2" label={<p>All</p>} icon={<PostAddIcon />} />
+              </Link>
+
+              <Link to="/admin/prasad">
+                <TreeItem nodeId="3" label={<p>Create</p>} icon={<AddIcon />} />
               </Link>
             </TreeItem>
           </TreeView>
@@ -52,12 +64,7 @@ const Sidebar = () => {
             <PeopleIcon /> Users
           </p>
         </Link>
-        <Link to="/admin/reviews">
-          <p>
-            <RateReviewIcon />
-            Reviews
-          </p>
-        </Link>
+
       </div>
     </Wrapper>
   );

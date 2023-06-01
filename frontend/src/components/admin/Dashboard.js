@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction.js";
 import { getAllUsers } from "../../actions/userAction.js";
-// import MetaData from "../layout/MetaData";
+import { getAdminPrasad } from "../../actions/prasadAction.js";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const Dashboard = () => {
   const { orders } = useSelector((state) => state.allOrders);
 
   const { users } = useSelector((state) => state.allUsers);
+
 
   let outOfStock = 0;
 
@@ -65,7 +66,6 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      {/* <MetaData title="Dashboard - Admin Panel" /> */}
       <Sidebar />
 
       <div className="dashboardContainer">
@@ -74,7 +74,7 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ₹{totalAmount}
+              Total Amount <br /> ₹{totalAmount.toFixed(2)}
             </p>
           </div>
            <div className="dashboardSummaryBox2">
@@ -93,13 +93,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* <div className="lineChart">
-          <Line data={lineState} />
-        </div> */}
-
-        {/* <div className="doughnutChart">
-  <Doughnut data={doughnutState} />
-        </div>  */}
       </div>
     </div>
   );

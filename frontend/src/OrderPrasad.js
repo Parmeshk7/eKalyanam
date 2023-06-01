@@ -14,7 +14,11 @@ const gods = [
   "Krishna",
   "Hanuman",
   "Shiv",
-  "Vishnu"
+  "Vishnu",
+  "Mata",
+  "Sai",
+  "Ganesha"
+  
 ];
 
 
@@ -63,7 +67,6 @@ const OrderPrasad = () => {
               ))}
           </div>
 
-          {/* {resultPerPage < productCount && ( */}
           <div className="paginationBox">
             <Pagination
               activePage={currentPage}

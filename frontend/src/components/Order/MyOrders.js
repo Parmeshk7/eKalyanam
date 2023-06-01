@@ -1,13 +1,11 @@
 import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-// import "./myOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
 import Loader from "../layout/Loader";
 import { Link } from "react-router-dom";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
-// import MetaData from "../layout/MetaData";
 import LaunchIcon from "@mui/icons-material/Launch";
 import styled from "styled-components";
 
@@ -84,7 +82,6 @@ const MyOrders = () => {
 
   return (
     <Wrapper>
-      {/* <MetaData title={`${user.name} - Orders`} /> */}
 
       {loading ? (
         <Loader />
@@ -99,7 +96,6 @@ const MyOrders = () => {
             autoHeight
           />
 
-          {/* <Typography id="myOrdersHeading">{isAuthenticated && user.name}'s Orders</Typography> */}
         </div>
       )}
     </Wrapper>

@@ -14,7 +14,8 @@ const categories = [
   "Mala",
   "Pendant",
   "Idol",
-  "Shivling"
+  "Shivling",
+  "Others"
 
 ];
 
@@ -29,6 +30,7 @@ const TempleStore = () => {
     (state) => state.products
   );
 
+
   const total = parseInt(productCount);
 
   const setCurrentPageNo = (e) => {
@@ -39,7 +41,6 @@ const TempleStore = () => {
       setPrice(newPrice);
   };
 
-  // let count = filteredProductsCount;
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -68,7 +69,6 @@ const TempleStore = () => {
               ))}
           </div>
 
-          {/* {resultPerPage < productCount && ( */}
           <div className="paginationBox">
             <Pagination
               activePage={currentPage}

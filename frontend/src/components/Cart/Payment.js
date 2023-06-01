@@ -3,7 +3,6 @@ import styled from "styled-components";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import {useNavigate} from "react-router-dom";
-// import MetaData from "../layout/MetaData";
 import { Typography } from "@material-ui/core";
 import { useAlert } from "react-alert";
 import {
@@ -15,7 +14,6 @@ import {
 } from "@stripe/react-stripe-js";
 
 import axios from "axios";
-// import "./payment.css";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import EventIcon from "@mui/icons-material/Event";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
@@ -119,7 +117,6 @@ const Payment = () => {
 
   return (
     <Wrapper>
-      {/* <MetaData title="Payment" /> */}
       <CheckoutSteps activeStep={2} />
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>

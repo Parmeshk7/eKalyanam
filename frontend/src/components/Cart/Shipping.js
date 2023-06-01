@@ -36,14 +36,11 @@ const Shipping = () => {
     dispatch(
       saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
     );
-    // history.push("/order/confirm");
     navigate("/order/confirm");
   };
 
   return (
     <Fragment>
-      {/* <MetaData title="Shipping Details" /> */}
-
       <CheckoutSteps activeStep={0} />
 
       <div className="shippingContainer">

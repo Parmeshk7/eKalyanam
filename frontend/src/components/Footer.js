@@ -22,7 +22,6 @@ const Footer = () => {
             </div>
           </div>
         </section>
-        {/* footer section */}
 
         <footer>
           <div className="container grid grid-four-column">
@@ -35,7 +34,6 @@ const Footer = () => {
               <form action="#">
                 <input type="email" name="email" placeholder="YOUR E-MAIL" />
 
-                {/* <input type="submit" value="subscribe" /> */}
                 <Button className="btn"> Subscribe</Button>
               </form>
             </div>

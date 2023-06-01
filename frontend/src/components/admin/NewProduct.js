@@ -34,7 +34,8 @@ const NewProduct = ({ history }) => {
     "Mala",
     "Pendant",
     "Idol",
-    "Shivling"
+    "Shivling",
+    "Others"
   ];
 
   useEffect(() => {
@@ -89,7 +90,6 @@ const NewProduct = ({ history }) => {
 
   return (
     <Fragment>
-      {/* <MetaData title="Create Product" /> */}
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">

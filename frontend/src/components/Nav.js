@@ -208,7 +208,7 @@ const Nav = () => {
       <div className="navbar">
         <ul className="navbar-lists">
         <li>
-            <NavLink to="/admin/dashboard" className="navbar-link cart-trolley--link">
+            <NavLink to="/me" className="navbar-link cart-trolley--link">
               <p className="user-login--name"><span style={{fontWeight: "600"}}>{isAuthenticated && `Welcome, ${user.name}`}</span></p>
             </NavLink>
           </li>

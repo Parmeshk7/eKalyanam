@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-// import MetaData from "../layout/MetaData";
 import { Link, useParams } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import SideBar from "./Sidebar";
@@ -14,7 +13,6 @@ import { useAlert } from "react-alert";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
-// import "./processOrder.css";
 import styled from "styled-components";
 import { grey } from "@mui/material/colors";
 
@@ -57,7 +55,6 @@ const ProcessOrder = () => {
 
   return (
     <Wrapper>
-      {/* <MetaData title="Process Order" /> */}
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">

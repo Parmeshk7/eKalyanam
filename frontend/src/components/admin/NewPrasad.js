@@ -36,7 +36,10 @@ const NewPrasad = () => {
     "Krishna",
     "Hanuman",
     "Shiv",
-    "Vishnu"
+    "Vishnu",
+    "Mata",
+    "Sai",
+    "Ganesha"
   ];
 
   useEffect(() => {

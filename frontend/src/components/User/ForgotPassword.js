@@ -5,7 +5,6 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-// import MetaData from "../layout/MetaData";
 import styled from "styled-components";
 
 const ForgotPassword = () => {
@@ -44,7 +43,6 @@ const ForgotPassword = () => {
         <Loader />
       ) : (
         <Fragment>
-          {/* <MetaData title="Forgot Password" /> */}
           <div className="forgotPasswordContainer">
             <div className="forgotPasswordBox">
               <h2 className="forgotPasswordHeading">Forgot Password</h2>

@@ -47,13 +47,6 @@ const LoginSignUp = () => {
   const registerSubmit = (e) => {
     e.preventDefault();
 
-    // const myForm = new FormData();
-
-    // myForm.set("name", name);
-    // myForm.set("email", email);
-    // myForm.set("password", password);
-
-    // myForm.set("avatar", avatar);
     const userData = {
         "name": name,
         "email": email,
@@ -79,7 +72,6 @@ const LoginSignUp = () => {
     }
   };
 
-//   const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
     if (error) {
@@ -188,16 +180,6 @@ const LoginSignUp = () => {
                     onChange={registerDataChange}
                   />
                 </div>
-
-                {/* <div id="registerImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
-                  <input
-                    type="file"
-                    name="avatar"
-                    accept="image/*"
-                    onChange={registerDataChange}
-                  /> */}
-                {/* </div> */}
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>
             </div>
