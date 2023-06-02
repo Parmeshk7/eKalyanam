@@ -7,7 +7,7 @@ eKalyanam is an Online Worship platform where anyone can order Prasad or Other R
 	2. Install Node Js, MongoDb, React in your System
 
 
-# Backend:
+## Backend:
 	1. In the root Folder of project open cmd or terminal.
 	2. Run command 'npm install'
 
