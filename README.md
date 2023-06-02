@@ -3,7 +3,8 @@ eKalyanam is an Online Worship platform where anyone can order Prasad or Other R
 
 
 # How to Setup
-	1. Install Node Js, MongoDb, React in your System
+	1. clone the repository by git clone https://github.com/Parmeshk7/eKalyanam.git
+	2. Install Node Js, MongoDb, React in your System
 
 
 # Backend:
